@@ -2,29 +2,12 @@ import { PlayerType } from "@/types/player";
 
 export type AnswerButtonProps = {
   player: PlayerType;
-  correctPlayer: PlayerType;
-  selectedName: string | null;
   handleClick: () => void;
 };
 
-const AnswerButton = ({
-  player,
-  correctPlayer,
-  selectedName,
-  handleClick,
-}: AnswerButtonProps) => {
-  let buttonColor = "bg-white";
-
-  if (selectedName !== null) {
-    if (player.name === correctPlayer.name) {
-      buttonColor = "bg-green-500";
-    } else if (player.name === selectedName) {
-      buttonColor = "bg-red-500";
-    }
-  }
-
+const AnswerButton = ({ player, handleClick }: AnswerButtonProps) => {
   return (
-    <button onClick={handleClick} className={buttonColor}>
+    <button onClick={handleClick} className="bg-white">
       {player.name}
     </button>
   );
