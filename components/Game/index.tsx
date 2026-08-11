@@ -22,32 +22,24 @@ const Game = () => {
     setIsShown(false);
   };
 
-  if (!hasStarted) {
-    return (
-      <div>
-        <button onClick={() => setHasStarted(true)}>Start</button>
-      </div>
-    );
-  }
-
-  if (isFinished) {
-    return (
-      <div>
-        <p>That's all of the players</p>
-        <button onClick={handleRestart}>Restart</button>
-      </div>
-    );
-  }
-
   return (
     <div>
-      <Progress current={currentindex} players={players} />
-      <Flashcard
-        player={players[currentindex]}
-        isShown={isShown}
-        onReveal={() => setIsShown(true)}
-      />
-      {isShown && <button onClick={handleNext}>Next</button>}
+      {!hasStarted && (
+        <button onClick={() => setHasStarted(true)}>Start</button>
+      )}
+
+      {isFinished && <button onClick={handleRestart}>Restart</button>}
+      {hasStarted && !isFinished && (
+        <>
+          <Progress current={currentindex} players={players} />
+          <Flashcard
+            player={players[currentindex]}
+            isShown={isShown}
+            onReveal={() => setIsShown(true)}
+          />
+          {isShown && <button onClick={handleNext}>Next</button>}
+        </>
+      )}
     </div>
   );
 };
