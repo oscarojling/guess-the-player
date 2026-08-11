@@ -6,19 +6,19 @@ import Flashcard from "../Flashcard";
 import Progress from "../Progress";
 
 const Game = () => {
-  const [currentindex, setCurrentIndex] = useState<number>(0);
+  const [index, setIndex] = useState<number>(0);
   const [isShown, setIsShown] = useState<boolean>(false);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
-  const isFinished = currentindex >= players.length;
+  const isFinished = index >= players.length;
 
   const handleRestart = () => {
-    setCurrentIndex(0);
+    setIndex(0);
     setIsShown(false);
     setHasStarted(true);
   };
 
   const handleNext = () => {
-    setCurrentIndex(currentindex + 1);
+    setIndex(index + 1);
     setIsShown(false);
   };
 
@@ -31,9 +31,9 @@ const Game = () => {
       {isFinished && <button onClick={handleRestart}>Restart</button>}
       {hasStarted && !isFinished && (
         <>
-          <Progress current={currentindex} players={players} />
+          <Progress current={index} players={players} />
           <Flashcard
-            player={players[currentindex]}
+            player={players[index]}
             isShown={isShown}
             onReveal={() => setIsShown(true)}
           />
