@@ -4,6 +4,7 @@ import { useState } from "react";
 import { players } from "@/data/players";
 import Flashcard from "../Flashcard";
 import Progress from "../Progress";
+import SelectPlayer from "../SelectPlayer";
 
 const Game = () => {
   const [index, setIndex] = useState<number>(0);
@@ -28,7 +29,14 @@ const Game = () => {
         <button onClick={() => setHasStarted(true)}>Start</button>
       )}
 
-      {isFinished && <button onClick={handleRestart}>Restart</button>}
+      {isFinished && (
+        <div>
+          {players.map((player) => (
+            <SelectPlayer key={player.name} player={player} />
+          ))}
+          <button onClick={handleRestart}>Restart</button>
+        </div>
+      )}
       {hasStarted && !isFinished && (
         <>
           <Progress current={index} players={players} />
