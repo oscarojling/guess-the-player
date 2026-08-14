@@ -7,7 +7,7 @@ import GameProgress from "../GameProgress";
 import SelectPlayer from "../SelectPlayer";
 
 const Game = () => {
-  const [index, setIndex] = useState<number>(0);
+  const [index, setIndex] = useState<number>(23);
   const [isShown, setIsShown] = useState<boolean>(false);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
   const isFinished = index >= players.length;
@@ -29,10 +29,10 @@ const Game = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center gap-4 p-6">
       {!hasStarted && (
         <button
-          className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full bg-[#c67139] text-[#f5ead8] px-4 py-2 hover:bg-[#b2622d] active:bg-[#8c491a]"
+          className="cursor-pointer inline-flex items-center justify-center gap-1.5 text-sm rounded-full bg-[#006AA7] text-white px-4 py-2 hover:bg-[#00558a] active:bg-[#00436e]"
           onClick={() => setHasStarted(true)}
         >
           Start
@@ -40,16 +40,26 @@ const Game = () => {
       )}
 
       {isFinished && (
-        <div>
-          {players.map((player) => (
-            <SelectPlayer key={player.name} player={player} />
-          ))}
+        <div className="flex flex-col items-center gap-4 p-6">
           <button
-            className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full"
+            className="cursor-pointer inline-flex items-center justify-center gap-1.5 text-sm rounded-full bg-[#FECC02] text-[#00223b] px-4 py-2 hover:bg-[#e5b800] active:bg-[#FECC02]"
             onClick={handleRestart}
           >
             Restart
           </button>
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+            {players.map((player) => (
+              <a
+                key={player.name}
+                href={`https://en.wikipedia.org/wiki/${encodeURIComponent(player.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform duration-200 hover:scale-105 hover:shadow-lg"
+              >
+                <SelectPlayer player={player} />
+              </a>
+            ))}
+          </div>
         </div>
       )}
       {hasStarted && !isFinished && (
@@ -60,22 +70,24 @@ const Game = () => {
             isShown={isShown}
             onReveal={() => setIsShown(true)}
           />
-          {index > 0 && (
-            <button
-              className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full"
-              onClick={handlePrevious}
-            >
-              Previous
-            </button>
-          )}
-          {isShown && (
-            <button
-              className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full"
-              onClick={handleNext}
-            >
-              Next
-            </button>
-          )}
+          <div className="flex gap-3 mt-2">
+            {index > 0 && (
+              <button
+                className="cursor-pointer inline-flex items-center justify-center gap-1.5 text-sm rounded-full bg-[#FECC02] text-[#00223b] px-4 py-2 hover:bg-[#e5b800] active:bg-[#FECC02]"
+                onClick={handlePrevious}
+              >
+                Previous
+              </button>
+            )}
+            {isShown && (
+              <button
+                className="cursor-pointer inline-flex items-center justify-center gap-1.5 text-sm rounded-full bg-[#FECC02] text-[#00223b] px-4 py-2 hover:bg-[#e5b800] active:bg-[#FECC02]"
+                onClick={handleNext}
+              >
+                Next
+              </button>
+            )}
+          </div>
         </>
       )}
     </div>

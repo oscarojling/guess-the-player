@@ -13,7 +13,7 @@ describe("SelectPlayer", () => {
     expect(screen.getByRole("img")).toBeInTheDocument();
   });
   test("The image has the correct alt text", () => {
-    render(<SelectPlayer player={mockPlayer} />)
-    expect(screen.getByAltText(mockPlayer.name)).toBeInTheDocument()
-  })
+    render(<SelectPlayer player={mockPlayer} />);
+    expect(screen.getByAltText(mockPlayer.name)).toBeInTheDocument();
+  });
 });

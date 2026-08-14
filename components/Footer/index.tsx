@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer>
-      <p>Guess the Player Game</p>
+      <p>Guess the Player Game by Oscar</p>
     </footer>
   );
 };

@@ -6,7 +6,9 @@ export type ProgressProps = {
 };
 
 const GameProgress = ({ current, players }: ProgressProps) => {
-  return <span>{`Player ${current + 1} of ${players.length}`}</span>;
+  return (
+    <span className="text-sm text-[#006AA7]">{`Player ${current + 1} of ${players.length}`}</span>
+  );
 };
 
 export default GameProgress;

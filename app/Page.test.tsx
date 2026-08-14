@@ -9,6 +9,8 @@ describe("Page", () => {
       screen.getByRole("heading", { level: 1, name: /guess the player/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Start" })).toBeInTheDocument();
-    expect(screen.getByText(/guess the player Game/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/guess the player Game by oscar/i),
+    ).toBeInTheDocument();
   });
 });
