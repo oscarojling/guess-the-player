@@ -7,11 +7,12 @@ const mockPlayer: PlayerType = {
   image: "mock-image.jpg",
 };
 
-describe("SelectPlayer", () => {
-  test("renders image", () => {
+describe("Test select player functionality", () => {
+  test("Renders image", () => {
     render(<SelectPlayer player={mockPlayer} />);
     expect(screen.getByRole("img")).toBeInTheDocument();
   });
+
   test("The image has the correct alt text", () => {
     render(<SelectPlayer player={mockPlayer} />);
     expect(screen.getByAltText(mockPlayer.name)).toBeInTheDocument();

@@ -7,7 +7,7 @@ import GameProgress from "../GameProgress";
 import SelectPlayer from "../SelectPlayer";
 
 const Game = () => {
-  const [index, setIndex] = useState<number>(23);
+  const [index, setIndex] = useState<number>(0);
   const [isShown, setIsShown] = useState<boolean>(false);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
   const isFinished = index >= players.length;

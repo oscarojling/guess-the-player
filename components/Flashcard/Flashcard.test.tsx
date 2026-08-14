@@ -7,8 +7,8 @@ const FlashCardMock: PlayerType = {
   image: "mock-image.jpg",
 };
 
-describe("Flashcard", () => {
-  test("Do not show the name and show the button when it is false", () => {
+describe("Test flashcard functionality", () => {
+  test("Do not show the players name and show the reveal button when it is false", () => {
     const mockFunction = jest.fn();
     render(
       <Flashcard
@@ -21,7 +21,8 @@ describe("Flashcard", () => {
     expect(revealButton).toBeInTheDocument();
     expect(screen.queryByText(FlashCardMock.name)).not.toBeInTheDocument();
   });
-  test("Show the name and hide the button when it is true", () => {
+
+  test("Show the players name and hide the reveal button when it is true", () => {
     const mockFunction = jest.fn();
     render(
       <Flashcard
@@ -34,7 +35,8 @@ describe("Flashcard", () => {
     const revealButton = screen.queryByRole("button", { name: /reveal/i });
     expect(revealButton).not.toBeInTheDocument();
   });
-  test("Respond when user click the button, which trigges action", () => {
+
+  test("Respond when user click the button, which triggers the reveal function", () => {
     const mockFunction = jest.fn();
     render(
       <Flashcard

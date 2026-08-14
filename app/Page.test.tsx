@@ -4,7 +4,6 @@ import Page from "./page";
 describe("Page", () => {
   test("Page renders header, game and footer", () => {
     render(<Page />);
-
     expect(
       screen.getByRole("heading", { level: 1, name: /guess the player/i }),
     ).toBeInTheDocument();

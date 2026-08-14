@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import Header from "./";
 
-describe("Header", () => {
-  test("that there is only one H1 on the page", () => {
+describe("Test header functionality", () => {
+  test("That there is only one H1 on the page", () => {
     render(<Header />);
 
     const pageTitle = screen.getByRole("heading", { level: 1 });
