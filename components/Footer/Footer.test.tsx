@@ -4,6 +4,6 @@ import Footer from './'
 describe("Footer", () => {
   test("displays the expected text", () => {
     render(<Footer />)
-    expect(screen.getByText(/guess the player game/i)).toBeInTheDocument
+    expect(screen.getByText(/guess the player game/i)).toBeInTheDocument()
   })
 })
