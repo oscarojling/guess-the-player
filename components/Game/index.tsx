@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { players } from "@/data/players";
 import Flashcard from "../Flashcard";
-import Progress from "../Progress";
+import GameProgress from "../GameProgress";
 import SelectPlayer from "../SelectPlayer";
 
 const Game = () => {
@@ -39,7 +39,7 @@ const Game = () => {
       )}
       {hasStarted && !isFinished && (
         <>
-          <Progress current={index} players={players} />
+          <GameProgress current={index} players={players} />
           <Flashcard
             player={players[index]}
             isShown={isShown}

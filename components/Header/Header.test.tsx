@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Header from "./";
 
-describe("The header works ok", () => {
+describe("Header", () => {
   test("that there is only one H1 on the page", () => {
     render(<Header />);
 

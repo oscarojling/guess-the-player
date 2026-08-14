@@ -1,5 +1,5 @@
 import { PlayerType } from "@/types/player";
-import Progress from "./";
+import Progress from ".";
 import { render, screen } from "@testing-library/react";
 
 const mockPlayers: PlayerType[] = [
