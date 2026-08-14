@@ -9,15 +9,15 @@ const mockPlayers: PlayerType[] = [
 ];
 
 describe("Progress", () => {
-  test("The array adds one more to progress", () => {
+  test("Shows Player 1 of 3 when current player index is 0", () => {
     render(<Progress current={0} players={mockPlayers} />);
     expect(screen.getByText("Player 1 of 3")).toBeInTheDocument();
   });
-  test("The array adds one more to progress", () => {
+  test("Shows Player 2 of 3 when current player index is 1", () => {
     render(<Progress current={1} players={mockPlayers} />);
     expect(screen.getByText("Player 2 of 3")).toBeInTheDocument();
   });
-  test("The array adds one more to progress", () => {
+  test("Shows Player 3 of 3 when current player index is 2", () => {
     render(<Progress current={2} players={mockPlayers} />);
     expect(screen.getByText("Player 3 of 3")).toBeInTheDocument();
   });
