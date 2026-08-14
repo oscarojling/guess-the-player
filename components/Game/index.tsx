@@ -23,10 +23,20 @@ const Game = () => {
     setIsShown(false);
   };
 
+  const handlePrevious = () => {
+    setIndex(index - 1);
+    setIsShown(false);
+  };
+
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center justify-center">
       {!hasStarted && (
-        <button onClick={() => setHasStarted(true)}>Start</button>
+        <button
+          className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full bg-[#c67139] text-[#f5ead8] px-4 py-2 hover:bg-[#b2622d] active:bg-[#8c491a]"
+          onClick={() => setHasStarted(true)}
+        >
+          Start
+        </button>
       )}
 
       {isFinished && (
@@ -34,7 +44,12 @@ const Game = () => {
           {players.map((player) => (
             <SelectPlayer key={player.name} player={player} />
           ))}
-          <button onClick={handleRestart}>Restart</button>
+          <button
+            className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full"
+            onClick={handleRestart}
+          >
+            Restart
+          </button>
         </div>
       )}
       {hasStarted && !isFinished && (
@@ -45,7 +60,22 @@ const Game = () => {
             isShown={isShown}
             onReveal={() => setIsShown(true)}
           />
-          {isShown && <button onClick={handleNext}>Next</button>}
+          {index > 0 && (
+            <button
+              className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full"
+              onClick={handlePrevious}
+            >
+              Previous
+            </button>
+          )}
+          {isShown && (
+            <button
+              className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full"
+              onClick={handleNext}
+            >
+              Next
+            </button>
+          )}
         </>
       )}
     </div>

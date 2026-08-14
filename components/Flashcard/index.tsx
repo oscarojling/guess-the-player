@@ -12,7 +12,7 @@ const Flashcard = ({ player, isShown, onReveal }: FlashcardProps) => {
     <div>
       <SelectPlayer player={player} />
       {!isShown ? (
-        <button onClick={onReveal}>Reveal</button>
+        <button className="inline-flex items-center justify-center gap-1.5 text-sm rounded-full" onClick={onReveal}>Reveal</button>
       ) : (
         <p>{player.name}</p>
       )}
