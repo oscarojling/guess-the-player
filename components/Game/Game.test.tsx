@@ -6,6 +6,8 @@ describe("tests that checks the functionality of the game", () => {
   test("Show only start button before game starts", () => {
     render(<Game />);
     expect(screen.getByRole("button", { name: "Start" })).toBeInTheDocument();
+    expect(screen.queryByText(/Player 1 of /i)).not.toBeInTheDocument();
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
   test("Show the game when clicking on start button", () => {
