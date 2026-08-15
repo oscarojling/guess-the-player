@@ -116,6 +116,6 @@ describe("tests that checks the functionality of the game", () => {
       fireEvent.click(screen.getByRole("button", { name: "Next" }));
     });
     const images = screen.getAllByRole("img");
-    expect(images.length).toBe(players.length);
+    expect(images.length).toEqual(players.length);
   });
 });
